@@ -1,10 +1,7 @@
 package com.example.demo_mysql.dao;
 
 import com.example.demo_mysql.entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 
 @Mapper
@@ -17,5 +14,8 @@ public interface  Usermapping {
 
     @Insert("insert into user(username,encryptedPassword,createdAt,updatedAt) values(#{username},#{encryptedPassword},now(),now())")
     void save(@Param("username") String username,@Param("encryptedPassword") String encryptedPassword);
+
+    @Update("update user set encryptedPassword = #{encryptedPassword} where username=#{username}")
+    void update(@Param("encryptedPassword") String encryptedPassword,@Param("username") String username);
 }
 

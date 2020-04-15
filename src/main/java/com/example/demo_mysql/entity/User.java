@@ -10,6 +10,7 @@ public class User {
     String avatar;
     Instant createdAt;
     Instant updatedAt;
+    private Role role;
 
     public User(Integer id, String username, String encryptedPassword, String avatar, Instant createdAt, Instant updatedAt) {
         this.id = id;
